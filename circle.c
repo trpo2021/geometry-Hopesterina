@@ -32,39 +32,68 @@ int main()
 
     fclose(fptr);     //записали строку из файла в массив а
 
+    char b[N] = "Circle(4 10, 3)";
     int j = 0;
-    for(int i = 0; i < N-1; i++)                       // circle(2 10, 3)
-    {
-         if((a[i] == '(') || (a[i] == ' ') || (a[i] == ','))
-         {
-              arr[j] = a[i+1];
-              j++;
-         };
-         if(a[i] == ')')
-         {
-              break;
-         };
 
+    int k = -1;
+    for(int i = 0; i < N-1; i++)
+    {
+        if(a[i] != b[i])
+        {
+            k = k + 1;     
+        }        
+        
     }
 
-
-    r = arr[3] - '0';
-//    x = arr[0] - '0';
-//    y = arr[1] - '0';
-
-
-    s =  M_PI * r * r;
-
-    p =  2 * M_PI * r;
-
-    for(int i = 0; i < N; i++)
+    if (k > 0)
     {
-        printf("%c", a[i]);
+        for(int i = 0; i < N; i++)
+        {
+            printf("%c", a[i]);
+        }
+        
+        printf("incorrect data entry\n");
+        printf("please correct\n"); 
+
+        
+    }
+
+    else
+    {
+        for(int i = 0; i < N-1; i++)                       // circle(4 10, 3)
+        {
+           if((a[i] == '(') || (a[i] == ' ') || (a[i] == ','))
+           {
+               arr[j] = a[i+1];
+               j++;
+           };
+
+           if(a[i] == ')')
+           {
+                break;
+           };
+        }
+    
+
+
+        r = arr[3] - '0';
+     //    x = arr[0] - '0';
+     //    y = arr[1] - '0';
+
+
+        s =  M_PI * r * r;
+
+        p =  2 * M_PI * r;
+
+        for(int i = 0; i < N; i++)
+        {
+            printf("%c", a[i]);
+
+        }
+        printf("area = %.2f\n",s);
+        printf("perimeter = %.2f\n",p);
 
     }
-    printf("area = %.2f\n",s);
-    printf("perimeter = %.2f\n",p);
-
 
     return 0;
 }
