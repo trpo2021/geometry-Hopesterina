@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 50
-#define M 10
 #include <math.h>
+#include <ctype.h>
+#define N 50
 
 int main()
 {
-    int r = 0;
-    float s = 0, p = 0;
-    char  r_arr[N]; 
+    int radius = 0;
+    float area = 0, perimetr = 0;
+    char  r_arr[N];
     char input_arr[N] = {0};
+    char name_of_figure[6] = "Circle";
+
+    int i, j, k, t;           // вспомогательные переменные
     FILE *fptr = NULL;
 
     fptr = fopen("input.txt", "r");
@@ -19,7 +22,7 @@ int main()
     }
     else
     {
-        int i = 0;
+        i = 0;
 
         while (i < N)
         {
@@ -30,34 +33,70 @@ int main()
 
     fclose(fptr);     //записали строку из файла в массив а
 
-    char name_of_figure[6] = "Circle";
-    int k = 0, t = 0;
-    for(int i = 0; i < 6; i++)
+    
+    k = 0;
+    for(i = 0; i < 6; i++)
     {
         if(input_arr[i] != name_of_figure[i])
         {
             k = k + 1;
             break;
         }
-    }                                                // выполнили проверку имени фигуры
-          
-    for(int i = 7; i < 14; i++)                       // 4 10, 3
+    }                                               // выполнили проверку имени фигуры
+
+    j = 7;
+    t = 0;                                         
+    while (input_arr[j] != ' ')
     {
-        if((input_arr[i] != '0') && (input_arr[i] != '1') && (input_arr[i] != '2') && (input_arr[i] != '3') && (input_arr[i] !='4') && 
-        (input_arr[i] != '5') && (input_arr[i] != '6') && (input_arr[i] != '7') && (input_arr[i] != '8') && (input_arr[i] != '9') && 
-        (input_arr[i] != ',') && (input_arr[i] != ' ') && (input_arr[i] != ')') && (input_arr[i] != '('))
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
         {
-            t = 1;
-            break;
-        } 
-         
+            t++;
+            break;      
+        }
+        else
+        {    
+            j++;
+        }    
+    }
+    
+
+    while ((input_arr[j] != ',') && (input_arr[j + 1] != ' '))
+    {
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
+        {
+            t++;
+            break;         
+        }
+        j++;
         
-    }                                                // выполнили проверку того, что в скобках
-        
+    
+    } 
+
+    if (input_arr[j + 1] != ' ')
+    {
+        t++;
+    }
+
+    j++;
+    
+    while (input_arr[j] != ')')
+    {
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
+        {
+            t++;
+            break;          
+        }
+        else
+        { 
+            j++;
+        }            
+    }
+    
+   // Выполнили проверку параметров фигуры
     
     if (k > 0) 
     {
-        for(int i = 0; i < N; i++)
+        for(i = 0; i < N; i++)
         {
             printf("%c", input_arr[i]);
         }
@@ -67,47 +106,46 @@ int main()
     }
     else
     {
-        if (t == 1)
+        if (t > 0)
         {
-            for(int i = 0; i < N; i++)
+            for(i = 0; i < N; i++)
             {
                 printf("%c", input_arr[i]);
             }
             printf("invalid values\n");
-            printf("please correct\n");              // ошибка о значениях
+            printf("please correct\n");              // ошибка о параметрах фигуры
         }
         else
         {
-        
-            for (int i = 0; i < N; i++) 
+            for (i = 0; i < N; i++) 
             {
                 if ((input_arr[i] == ',') && (input_arr[i + 1] == ' ')) 
                 {
-                    for (int k = i; input_arr[k + 1] != ')'; k++) 
+                    for (k = i; input_arr[k + 1] != ')'; k++) 
                     {
                         r_arr[k - i] = input_arr[k + 1];
                     }
-                };
+                }
 
             }
-            r = atoi(r_arr);
 
-            s =  M_PI * r * r;
+            radius = atoi(r_arr);
 
-            p =  2 * M_PI * r;
+            area =  M_PI * radius * radius;
+
+            perimetr =  2 * M_PI * radius; 
        
             printf("\n");
-            for(int i = 0; i < N; i++)
+            for(i = 0; i < N; i++)
             {
                 printf("%c", input_arr[i]);
             }
         
-            printf("area = %.3f\n",s);
-            printf("perimeter = %.3f\n",p); 
+            printf("area = %.3f\n",area);
+            printf("perimeter = %.3f\n",perimetr); 
         }
         
-    }
-        
+    } 
 
     return 0;
 }
