@@ -6,7 +6,7 @@
 
 int main()
 {
-    int radius = 0;
+    float radius = 0;
     float area = 0, perimetr = 0;
     char  r_arr[N];
     char input_arr[N] = {0};
@@ -42,13 +42,15 @@ int main()
             k = k + 1;
             break;
         }
-    }                                               // выполнили проверку имени фигуры
+    }     
+                                              // выполнили проверку имени фигуры
 
-    j = 7;
+
+    j = 7;   
     t = 0;                                         
     while (input_arr[j] != ' ')
     {
-        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '0')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
         {
             t++;
             break;      
@@ -58,30 +60,31 @@ int main()
             j++;
         }    
     }
-    
 
     while ((input_arr[j] != ',') && (input_arr[j + 1] != ' '))
     {
-        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '0')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
         {
             t++;
             break;         
         }
-        j++;
-        
+        else
+        {
+            j++;
+        }       
     
     } 
-
+ 
     if (input_arr[j + 1] != ' ')
     {
         t++;
     }
 
     j++;
-    
+ 
     while (input_arr[j] != ')')
     {
-        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '1')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
+        if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '0')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
         {
             t++;
             break;          
@@ -91,7 +94,7 @@ int main()
             j++;
         }            
     }
-    
+
    // Выполнили проверку параметров фигуры
     
     if (k > 0) 
