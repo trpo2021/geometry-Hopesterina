@@ -47,7 +47,11 @@ int main()
 
 
     j = 7;   
-    t = 0;                                         
+    t = 0;  
+    if (input_arr[j] == ' ')
+    {
+        t++;
+    }                                       
     while (input_arr[j] != ' ')
     {
         if ((input_arr[j] != '-') && (!(((input_arr[j] <= '9') && (input_arr[j] >= '0')) || (input_arr[j] == '.'))) && (input_arr[j] != ' '))
@@ -94,6 +98,24 @@ int main()
             j++;
         }            
     }
+
+/*
+    int i = 8;
+    while (input_arr[i] != ')')
+    
+    {
+        while (input_arr[i] )
+        {
+        int p = 0;
+        if (((input_arr[i] <= '9') && (input_arr[j] >= '0')) || (input_arr[j] == '.'))
+        {
+            p++;
+        }
+        }
+
+    }
+    */
+
 
    // Выполнили проверку параметров фигуры
     
