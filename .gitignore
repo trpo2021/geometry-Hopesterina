@@ -1,4 +1,6 @@
 #ignore object files
+*.o
+*.d
 *.a
-geometry
 myf
+geometryy
