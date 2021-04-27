@@ -1,0 +1,5 @@
+Circle(3 3, 1)
+Circle(6 6, 1)
+Circle(9 9, 20)
+Circle(3 4, 2)
+Circle(3 3, 20)

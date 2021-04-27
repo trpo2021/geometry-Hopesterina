@@ -1,0 +1,8 @@
+#ignore object files
+*.o
+*.d
+*.a
+myf
+geometryy
+figure
+test
